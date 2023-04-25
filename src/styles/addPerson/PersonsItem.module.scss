@@ -1,0 +1,21 @@
+@use "../mixins.scss" as m;
+@use "../variants.scss" as v;
+
+.addPerson_persons_item {
+    @include m.user_item;
+
+    .addPerson_persons_item_username {
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: v.$persons-item-username-color;
+    }
+
+    .addPerson_persons_item_username_match {
+        @extend .addPerson_persons_item_username;
+
+        color: v.$persons-item-username-match-color;
+    }
+}

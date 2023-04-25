@@ -1,0 +1,11 @@
+@use "../variants.scss" as v;
+@use "../index.module.scss" as i;
+
+.chats_bottom_container {
+    width: 67%;
+
+    @include i.media-breakpoint-up(md) {
+        width: 100%;
+        row-gap: i.$spacer * 1.5;
+    }
+}

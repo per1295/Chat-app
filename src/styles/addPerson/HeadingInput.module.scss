@@ -1,0 +1,10 @@
+@use "../variants.scss" as v;
+
+.addPerson_heading_input {
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: v.$heading-input-color;
+}

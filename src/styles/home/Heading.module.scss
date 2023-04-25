@@ -1,0 +1,26 @@
+@use "../variants.scss" as v;
+@use "../index.module.scss" as i;
+@use "../mixins.scss" as m;
+
+.home_heading {
+    @include m.main_text(34px, 54px);
+    
+    padding-left: 13.5%;
+
+    @media screen and ( max-width: 300px ) {
+        padding-left: 0;
+        align-self: center;
+        text-align: center;
+    }
+
+    @media screen and ( min-width: 425px ) {
+        max-width: 90%;
+        padding-left: 0;
+        align-self: center;
+        text-align: center;
+    }
+
+    @include i.media-breakpoint-up(md) {
+        max-width: unset;
+    }
+}

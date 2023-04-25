@@ -1,0 +1,19 @@
+@use "../../index.module.scss" as i;
+
+.chat_bottom_sendButton {
+    background-color: transparent;
+
+    &:hover .chat_bottom_sendButton_icon {
+        color: darken($color: i.$blue, $amount: 20);
+    }
+
+    .chat_bottom_sendButton_icon {
+        font-size: 35px;
+        color: i.$blue;
+        transition: color .35s ease;
+
+        @media screen and ( max-width: 330px ) {
+            font-size: 25px;
+        }
+    }
+}

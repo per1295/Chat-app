@@ -1,0 +1,18 @@
+@use "../mixins.scss" as m;
+@use "../index.module.scss" as i;
+
+.settings_profileData_label {
+    @include m.profile_text();
+
+    @include i.media-breakpoint-up(md) {
+        @include m.profile_text(
+            $font-size: 30px
+        )
+    }
+}
+
+.settings_profileData_input {
+    @include i.media-breakpoint-up(md) {
+        font-size: i.$spacer * 1.5;
+    }
+}

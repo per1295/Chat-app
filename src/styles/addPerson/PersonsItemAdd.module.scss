@@ -1,0 +1,33 @@
+@use "../variants.scss" as v;
+
+.addPerson_persons_item_add {
+    height: 30px;
+    width: 30px;
+    min-height: 30px;
+    min-width: 30px;
+    background-color: v.$persons-item-add-bg;
+    transition: background-color .35s ease;
+    z-index: 2;
+
+    &:hover {
+        background-color: lighten($color: v.$persons-item-add-bg, $amount: 30);
+    }
+
+    &:hover .addPerson_persons_item_add_icon {
+        color: lighten($color: v.$persons-item-add-icon-color, $amount: 30);
+    }
+
+    &:disabled {
+        background-color: darken($color: v.$persons-item-add-bg, $amount: 30);
+    }
+
+    &:disabled .addPerson_persons_item_add_icon {
+        color: darken($color: v.$persons-item-add-bg, $amount: 30);
+    }
+
+    .addPerson_persons_item_add_icon {
+        font-size: 25px;
+        color: v.$persons-item-add-icon-color;
+        transition: color .35s ease;
+    }
+}

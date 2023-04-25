@@ -1,0 +1,15 @@
+@use "../../variants.scss" as v;
+@use "../../mixins.scss" as m;
+
+.chat_voiceRecorder {
+    background-color: v.$voice-recorder-bg;
+
+    .chat_voiceRecorder_icon {
+        font-size: 35px;
+        color: v.$voice-recorder-icon-color;
+    }
+
+    .chat_voiceRecorder_time {
+        @include m.main_text;
+    }
+}

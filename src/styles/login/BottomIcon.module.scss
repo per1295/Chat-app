@@ -1,0 +1,17 @@
+@use "../variants.scss" as v;
+
+.login_bottom_i {
+    font-size: 30px;
+
+    &:first-child {
+        color: v.$bottom-google-color;
+    }
+
+    &:nth-child(2) {
+        color: v.$bottom-apple-color;
+    }
+
+    &:last-child {
+        color: v.$bottom-facebook-color;
+    }
+}

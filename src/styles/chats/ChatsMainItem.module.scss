@@ -1,0 +1,18 @@
+@use "../variants.scss" as v;
+@use "../mixins.scss" as m;
+
+.chats_main_item {
+    @include m.user_item;
+
+    .chats_main_item_img {
+        object-fit: cover;
+        margin-right: 13px;
+        background-color: v.$chats-main-item-img-bg;
+        border: 2px solid;
+        border-image-source: linear-gradient(180deg, v.$chats-main-item-img-border-color-linear-gradient-1 35%, v.$chats-main-item-img-border-color-linear-gradient-2 100%);
+    }
+
+    .chats_main_item_icon {
+        font-size: 50px;
+    }
+}

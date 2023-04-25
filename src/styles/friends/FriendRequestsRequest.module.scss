@@ -1,0 +1,28 @@
+@use "../mixins.scss" as m;
+@use "../variants.scss" as v;
+@use "../index.module.scss" as i;
+
+.friends_friendRequests_request {
+    @include m.user_item;
+
+    width: 89%;
+
+    .friends_friendRequests_request_profileImage {
+        object-fit: cover;
+    }
+
+    .friends_friendRequests_request_icon {
+        font-size: 50px;
+    }
+
+    .friends_friendRequests_request_main {
+        .friends_friendRequests_request_main_username {
+            font-family: var(--poppins-font);
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: v.$persons-item-username-color;
+        }
+    }
+}

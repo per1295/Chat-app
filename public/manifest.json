@@ -1,0 +1,29 @@
+{
+    "name": "Chats Application",
+    "short_name": "Chats",
+    "description": "Chats application for chatting with each other",
+    "theme_color": "#771f98",
+    "background_color": "#1877f2",
+    "display": "standalone",
+    "orientation": "any",
+    "scope": "/",
+    "start_url": "/home",
+    "icons": [
+        {
+            "src": "/icons/icon_1.jpg",
+            "sizes": "360x360",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "/icons/icon_2.png",
+            "sizes": "225x225",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/icon_3.png",
+            "sizes": "900x900",
+            "type": "image/png"
+        }
+    ]
+}

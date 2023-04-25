@@ -1,0 +1,18 @@
+@use "../../variants.scss" as v;
+
+.chat_heading_inf {
+    max-width: 37.6%;
+
+    @media screen and ( max-width: 330px ) {
+        margin-left: 0 !important;
+    }
+
+    .chat_heading_inf_img {
+        object-fit: cover;
+    }
+    
+    .chat_heading_inf_icon {
+        font-size: 50px;
+        color: v.$black;
+    }
+}

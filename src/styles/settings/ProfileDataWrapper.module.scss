@@ -1,0 +1,12 @@
+@use "../mixins.scss" as m;
+@use "../index.module.scss" as i;
+
+.settings_profileData_text {
+    @include m.profile_text();
+
+    @include i.media-breakpoint-up(md) {
+        @include m.profile_text(
+            $font-size: 30px
+        )
+    }
+}

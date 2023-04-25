@@ -1,0 +1,15 @@
+@use "../variants.scss" as v;
+@use "../mixins.scss" as m;
+
+.alert {
+    background-color: v.$purple !important;
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: v.$white !important;
+
+    .alert_error_icon {
+        color: v.$alert-error-icon-color;
+    }
+}

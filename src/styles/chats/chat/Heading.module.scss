@@ -1,0 +1,19 @@
+@use "../../variants.scss" as v;
+
+.chat_heading {
+    height: 98px !important;
+    max-height: none !important;
+    background: v.$heading-bg;
+    box-shadow: 0px 4px 4px v.$heading-box-shadow-color;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+
+    .chat_heading_arrow {
+        font-size: 40px;
+        color: v.$black;
+        
+        @media screen and ( max-width: 330px ) {
+            font-size: 30px;
+        }
+    }
+}

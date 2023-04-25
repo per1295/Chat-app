@@ -1,0 +1,12 @@
+@use "../variants.scss" as v;
+
+.chats_bottom_wrapper_md {
+    max-width: unset !important;
+    width: auto !important;
+    z-index: var(--bs-offcanvas-zindex);
+
+    .chats_bottom_md {
+        background: v.$bottom-bg;
+        box-shadow: inset 0px 4px 4px v.$bottom-box-shadow-color;
+    }
+}

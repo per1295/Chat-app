@@ -1,0 +1,49 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Chat application",
+  "scripts": {
+    "dev": "next dev -p 8080",
+    "build": "next build",
+    "start": "next start -p 8080",
+    "test:backend": "jest backend.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/per1295/Chat-app.git"
+  },
+  "keywords": [
+    "Chat",
+    "application"
+  ],
+  "author": "Egor Kuvshinow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/per1295/Chat-app/issues"
+  },
+  "homepage": "https://github.com/per1295/Chat-app#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
+    "axios": "^1.3.4",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
+    "cookiejs": "^2.1.2",
+    "mysql2": "^3.2.0",
+    "next": "^13.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "sharp": "^0.32.0"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.14.5",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "sass": "^1.58.3",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}

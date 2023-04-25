@@ -1,0 +1,15 @@
+@use "../variants.scss" as v;
+@use "../mixins.scss" as m;
+
+.audio {
+    background-color: v.$audio-bg;
+
+    .audio_icon {
+        font-size: 35px;
+        color: v.$audio-icon-color;
+    }
+
+    .audio_duration {
+        @include m.main_text;
+    }
+}

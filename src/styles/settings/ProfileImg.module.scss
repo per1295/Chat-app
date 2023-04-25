@@ -1,0 +1,29 @@
+@use "../variants.scss" as v;
+@use "../index.module.scss" as i;
+
+.settings_profileImg_img {
+    margin: 25px 0;
+    object-fit: cover;
+    background-position: center;
+    background-color: v.$profileImg-bg;
+    cursor: pointer;
+
+    @include i.media-breakpoint-up(md) {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+.settings_profileImg_icon {
+    background-color: transparent;
+    font-size: 100px;
+    transition: color .3s ease;
+
+    &:hover {
+        color: v.$profileImg-color-hover;
+    }
+
+    @include i.media-breakpoint-up(md) {
+        font-size: 200px;
+    }
+}

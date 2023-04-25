@@ -1,0 +1,20 @@
+@use "../index.module.scss" as i;
+
+.login_form {
+    margin-top: 49px;
+    width: min(350px, 89%);
+
+    @include i.media-breakpoint-up(md) {
+        width: 89%;
+        max-width: 1080px;
+    }
+
+    .login_form_container {
+        row-gap: 40px;
+    }
+
+    .login_form_button {
+        width: min(334px, 85%);
+        margin-bottom: 68px;
+    }
+}

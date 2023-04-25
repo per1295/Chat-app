@@ -1,0 +1,1 @@
+export type CarouselDirection = "right" | "left" | null;

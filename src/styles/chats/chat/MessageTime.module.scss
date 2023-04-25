@@ -1,0 +1,34 @@
+@use "../../variants.scss" as v;
+
+.chat_messages_message_time {
+    background-color: v.$message-time-bg;
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: v.$message-time-color;
+    border-radius: 7px;
+
+    .chat_messages_message_time_icon {
+        font-size: 15px;
+    }
+
+    .chat_messages_message_time_icon_waiting {
+        color: v.$message-time-icon-waiting-color;
+    }
+
+    .chat_messages_message_time_icon_sent {
+        margin-left: 2px;
+        color: v.$message-time-icon-read-color;
+    }
+
+    .chat_messages_message_time_icon_read {
+        margin-left: 2px;
+        color: v.$message-time-icon-sent-color;
+    }
+
+    .chat_messages_message_time_icon_error {
+        color: v.$message-time-icon-error-color;
+    }
+}

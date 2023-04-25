@@ -1,0 +1,24 @@
+@use "../index.module.scss" as i;
+@use "../variants.scss" as v;
+
+.friends_requests_request_main_buttons {
+    z-index: 2;
+
+    .friends_requests_request_main_buttons_accept {
+        @include i.button-variant(
+            $background: v.$request-btn-bg,
+            $border: v.$request-btn-bg
+        );
+    }
+
+    .friends_requests_request_main_buttons_deny {
+        @include i.button-variant(
+            $background: darken(v.$request-btn-bg, 15%),
+            $border: darken(v.$request-btn-bg, 15%)
+        );
+    }
+
+    .friends_requests_request_main_buttons_spinner {
+        color: i.$white;
+    }
+}

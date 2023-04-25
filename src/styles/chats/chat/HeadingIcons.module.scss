@@ -1,0 +1,16 @@
+@use "../../variants.scss" as v;
+
+.chat_heading_icons {
+    @media screen and ( max-width: 330px ) {
+        margin-left: 0 !important;
+    }
+
+    .chat_heading_icons_icon {
+        font-size: 35px;
+        color: v.$heading-icons-icon-color;
+    
+        @media screen and ( max-width: 330px ) {
+            font-size: 30px;
+        }
+    }
+}

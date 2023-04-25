@@ -1,0 +1,77 @@
+@use "./variants.scss" as v;
+@use "./index.module.scss" as i;
+
+@mixin main_text(
+    $font-size: 24px,
+    $line-height: 36px,
+    $font-weight: 600
+) {
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: v.$black;
+};
+
+@mixin sub_main_text() {
+    @include main_text(15px, 22px, 400);
+}
+
+@mixin user_item() {
+    width: min(89%, 350px);
+    border: 2px solid v.$chats-main-item-border-color;
+    border-radius: 14px;
+    transition: transform .5s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    @include i.media-breakpoint-up(md) {
+        width: 80%;
+    }
+}
+
+@mixin profile_text(
+    $font-size: 20px,
+    $line-height: 22px,
+    $font-weight: 400
+) {
+    @include main_text($font-size, $line-height, $font-weight);
+
+    cursor: pointer;
+}
+
+@mixin scrollbar(
+    $height: 50px,
+    $width: 6px,
+    $background-color: transparent,
+    $color: v.$purple
+) {
+    &::-webkit-scrollbar {
+        width: $width;
+        height: $height;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    & {
+        scrollbar-face-color: $color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+@mixin hide_scrollbar() {
+    @include scrollbar(
+        $height: 0px,
+        $width: 0px,
+        $color: transparent
+    )
+}

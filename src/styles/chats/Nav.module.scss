@@ -1,0 +1,14 @@
+@use "../index.module.scss" as i;
+
+.chats_nav {
+    width: min(287px, 73%);
+
+    @media screen and ( max-width: 305px ) {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    @include i.media-breakpoint-up(lg) {
+        width: 287px;
+    }
+}

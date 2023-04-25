@@ -1,0 +1,10 @@
+.home_carousel_item {
+    max-width: 100%;
+    min-width: 100%;
+
+    .home_carousel_item_img {
+        @extend .home_carousel_item;
+
+        object-fit: contain;
+    }
+}

@@ -1,0 +1,32 @@
+@use "../variants.scss" as v;
+
+.chats_search_searchInput {
+    background-color: v.$search-input-bg;
+    height: 39px;
+    width: min(290px, calc(84% - 43px));
+    padding-left: 14px;
+    padding-right: 14px;
+
+    .chats_search_searchInput_icon {
+        color: v.$search-input-color;
+        font-size: 20px;
+        padding-right: 11px;
+    }
+
+    .chats_search_searchInput_input {
+        background-color: transparent;
+        outline: none;
+        color: v.$search-input-color;
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+
+        &::placeholder {
+            @extend .chats_search_searchInput_input;
+
+            padding: 0;
+        }
+    }
+}

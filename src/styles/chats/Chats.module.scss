@@ -1,0 +1,9 @@
+@use "../index.module.scss" as i;
+
+.chats {
+    min-height: calc(100vh + 30px);
+
+    @include i.media-breakpoint-up(md) {
+        min-height: auto;
+    }
+}

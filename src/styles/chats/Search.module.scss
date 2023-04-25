@@ -1,0 +1,18 @@
+@use "../index.module.scss" as i;
+
+.chats_search {
+    margin-top: 36px;
+    margin-bottom: 36px;
+    width: min(87.7%, 345px);
+    height: 39px;
+    column-gap: 12px;
+    cursor: pointer;
+
+    @include i.media-breakpoint-up(md) {
+        width: auto;
+    }
+
+    @include i.media-breakpoint-up(lg) {
+        
+    }
+}

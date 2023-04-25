@@ -1,0 +1,15 @@
+@use "../variants.scss" as v;
+@use "../index.module.scss" as i;
+
+.chats_bottom_wrapper {
+    @include i.border-top-radius(18px);
+
+    height: auto !important;
+    max-height: none !important;
+    background: v.$bottom-bg;
+    box-shadow: inset 0px 4px 4px v.$bottom-box-shadow-color;
+
+    .chats_bottom {
+        height: 90px;
+    }
+}

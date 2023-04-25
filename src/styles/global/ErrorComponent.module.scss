@@ -1,0 +1,9 @@
+@use "../mixins.scss" as m;
+
+.error_title {
+    @include m.main_text;
+}
+
+.error_subTitle {
+    @include m.sub_main_text;
+}

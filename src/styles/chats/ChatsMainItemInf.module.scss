@@ -1,0 +1,44 @@
+@use "../variants.scss" as v;
+
+.chats_main_item_inf {
+    max-width: calc(100% - 50px);
+
+    .chats_main_item_inf_nickname {
+        max-width: 100%;
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: v.$chats-main-item-inf-nickname-color;
+
+        .chats_main_item_inf_nickname_matched {
+            @extend .chats_main_item_inf_nickname;
+
+            color: v.$purple;
+        }
+    }
+
+    .chats_main_item_inf_bottom {
+        max-width: 100%;
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 20px;
+        color: v.$chats-main-item-inf-bottom-color;
+
+        .chats_main_item_inf_bottom_icon {
+            margin-left: 2px;
+            margin-right: 3px;
+        }
+
+        .chats_main_item_inf_bottom_icon_read {
+            color: v.$chats-main-item-inf-bottom-icon-read-color;
+        }
+
+        .chats_main_item_inf_bottom_icon_sent {
+            color: v.$chats-main-item-inf-bottom-icon-sent-color;
+        }
+    }
+}

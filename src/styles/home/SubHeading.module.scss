@@ -1,0 +1,20 @@
+@use "../mixins.scss" as m;
+
+.home_subHeading {
+    @include m.sub_main_text();
+
+    padding-left: 6%;
+    width: min(290px, 74%);
+
+    @media screen and ( max-width: 350px ) {
+        padding-left: 0;
+        align-self: center;
+        text-align: center;
+    }
+
+    @media screen and ( min-width: 425px ) {
+        padding-left: 0;
+        align-self: center;
+        text-align: center;
+    }
+}

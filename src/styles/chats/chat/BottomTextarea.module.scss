@@ -1,0 +1,36 @@
+@use "../../variants.scss" as v;
+
+.chat_bottom_textarea {
+    min-height: auto !important;
+    height: auto !important;
+    resize: none !important;
+    background-color: transparent;
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: -0.408px;
+    color: v.$bottom-textarea-color;
+    border: none;
+
+    &:focus {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+    
+    &::-webkit-scrollbar-horizontal {
+        height: 0;
+    }
+    
+    &::-webkit-scrollbar-vertical {
+        width: 0;
+    }
+}

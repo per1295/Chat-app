@@ -1,0 +1,13 @@
+@use "../variants.scss" as v;
+
+.login_underForm_hr {
+    height: 1px;
+    width: 22.6%;
+    min-width: 89px;
+    background-color: v.$under-form-hr-bg;
+
+    @media screen and ( max-width: 310px ) {
+        min-width: unset;
+        width: 10vw;
+    }
+}

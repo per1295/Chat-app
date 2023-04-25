@@ -1,0 +1,9 @@
+@use "../../index.module.scss" as i;
+
+.user {
+    min-height: calc(100vh + 20px);
+
+    @include i.media-breakpoint-up(md) {
+        min-height: 100vh;
+    }
+}

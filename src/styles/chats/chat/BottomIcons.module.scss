@@ -1,0 +1,10 @@
+@use "../../variants.scss" as v;
+
+.chat_bottom_icons_icon {
+    font-size: 35px;
+    color: v.$bottom-icons-icon-color;
+
+    @media screen and ( max-width: 330px ) {
+        font-size: 25px;
+    }
+}

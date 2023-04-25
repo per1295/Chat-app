@@ -1,0 +1,9 @@
+@use "../../mixins.scss" as m;
+
+.chat_noMessages_main_text {
+    @include m.main_text;
+}
+
+.chat_noMessages_sub_text {
+    @include m.sub_main_text;
+}

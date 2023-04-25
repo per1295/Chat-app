@@ -1,0 +1,15 @@
+@use "../variants.scss" as v;
+
+.chats_nav_underline {
+    height: 1px;
+    width: 120%;
+    transition: opacity .25s ease;
+
+    @media screen and ( max-width: 305px ) {
+        display: none;
+    }
+}
+
+.chats_nav_underline_invisible {
+    opacity: 0;
+}

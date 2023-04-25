@@ -1,0 +1,9 @@
+@use "../mixins.scss" as m;
+
+.login_underForm {
+    margin-bottom: 38px;
+
+    .login_underForm_text {
+        @include m.sub_main_text();
+    }
+}

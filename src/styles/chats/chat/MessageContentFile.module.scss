@@ -1,0 +1,37 @@
+@use "../../variants.scss" as v;
+@use "../../index.module.scss" as i;
+
+.message_content_file {
+    background-color: darken($color: v.$message-content-file-bg, $amount: 10);
+    color: v.$message-content-file-color;
+
+    .message_content_file_icon {
+        font-size: 25px;
+
+        @include i.media-breakpoint-up(md) {
+            font-size: 40px;
+        }
+    }
+
+    .message_content_file_inf {
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+
+        @include i.media-breakpoint-up(md) {
+            line-height: normal;
+            font-size: 30px;
+        }
+    }
+
+    &[data-is-friend=true] {
+        background-color: transparent;
+        color: v.$message-friend-content-file-color;
+
+        .message_content_file_icon, .message_content_file_inf {
+            color: v.$message-friend-content-color;
+        }
+    }
+}

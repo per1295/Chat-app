@@ -1,0 +1,16 @@
+@use "../variants.scss" as v;
+
+.chats_main_item_birth {
+    top: 9px;
+    right: 17px;
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    color: v.$chats-main-item-birth-color;
+
+    @media screen and ( max-width: 260px ) {
+        display: none;
+    }
+}

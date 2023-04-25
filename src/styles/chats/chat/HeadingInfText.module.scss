@@ -1,0 +1,28 @@
+@use "../../variants.scss" as v;
+
+.chat_heading_inf_text {
+    max-width: calc(100% - 63px);
+    margin-left: 13px;
+
+    @media screen and ( max-width: 330px ) {
+        margin-left: 6.5px;
+    }
+
+    .chat_heading_inf_text_username {
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: v.$heading-text-username-color;
+    }
+    
+    .chat_heading_inf_text_status {
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: v.$heading-text-status-color;
+    }
+}

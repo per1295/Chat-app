@@ -1,0 +1,6 @@
+@use "../variants.scss" as v;
+
+.home_button {
+    width: min(295px, 75%);
+    margin-bottom: 56px;
+}

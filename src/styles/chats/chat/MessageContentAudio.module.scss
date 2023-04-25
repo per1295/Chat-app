@@ -1,0 +1,42 @@
+@use "../../variants.scss" as v;
+@use "../../index.module.scss" as i;
+
+.chat_message_content_audio {
+    background-color: darken($color: v.$message-content-audio-bg, $amount: 10);
+
+    .chat_message_content_audio_content {
+        background-color: transparent;
+
+        .chat_message_content_audio_content_icon {
+            font-size: 35px;
+            color: v.$message-content-audio-icon-color;
+
+            @include i.media-breakpoint-up(md) {
+                font-size: 50px;
+            }
+        }
+
+        .chat_message_content_audio_content_passedTime {
+            color: v.$message-content-audio-time-color;
+            font-family: var(--poppins-font);
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 21px;
+
+            @include i.media-breakpoint-up(md) {
+                line-height: normal;
+                font-size: 40px;
+            }
+        }
+    }
+
+    &[data-is-friend=true] {
+        background-color: transparent;
+        color: v.$message-friend-content-file-color;
+
+        .chat_message_content_audio_content_icon, .chat_message_content_audio_content_passedTime {
+            color: v.$message-friend-content-color;
+        }
+    }
+}

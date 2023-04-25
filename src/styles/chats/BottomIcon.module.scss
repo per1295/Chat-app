@@ -1,0 +1,27 @@
+@use "../variants.scss" as v;
+
+.chats_bottom_item {
+    color: v.$bottom-item-color;
+    font-size: 50px;
+    transition: color .25s ease;
+
+    &:hover {
+        color: lighten($color: v.$bottom-item-color, $amount: 20%);
+    }
+
+    @media screen and ( max-width: 200px ) {
+        font-size: 25px;
+    }
+
+    @media screen and ( min-width: 200px ) and ( max-width: 305px ) {
+        font-size: 35px;
+    }
+}
+
+.chats_bottom_item_active {
+    color: v.$bottom-item-color-active;
+
+    &:hover {
+        color: lighten($color: v.$bottom-item-color-active, $amount: 20%);
+    }
+}

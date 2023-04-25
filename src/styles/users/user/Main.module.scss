@@ -1,0 +1,38 @@
+@use "../../index.module.scss" as i;
+@use "../../variants.scss" as v;
+
+.user_main {
+    @include i.media-breakpoint-up(md) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .user_main_wrapper {
+        max-width: 500px;
+    }
+
+    .user_main_image {
+        margin: 25px 0;
+        object-fit: cover;
+        background-position: center;
+        background-color: v.$profileImg-bg;
+        cursor: pointer;
+
+        @include i.media-breakpoint-up(md) {
+            height: 300px;
+            width: 300px;
+        }
+    }
+
+    .user_main_icon {
+        background-color: transparent;
+        font-size: 100px;
+        transition: color .3s ease;
+    
+        @include i.media-breakpoint-up(md) {
+            font-size: 200px;
+        }
+    }
+}

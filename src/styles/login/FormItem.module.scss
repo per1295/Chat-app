@@ -1,0 +1,25 @@
+@use "../variants.scss" as v;
+
+.login_form_formItem {
+    border: 2px solid v.$form-border-color;
+    border-radius: 20px;
+
+    .login_form_formItem_input {
+        @extend .login_form_formItem;
+
+        border: none;
+    }
+}
+
+.login_form_formItem_text {
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: v.$black;
+}
+
+.login_form_formItem_tooltip {
+    width: 90%;
+}

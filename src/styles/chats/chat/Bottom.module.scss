@@ -1,0 +1,10 @@
+@use "../../variants.scss" as v;
+
+.chat_bottom {
+    height: 126px !important;
+    max-height: none !important;
+    background: v.$bottom-bg;
+    box-shadow: inset 0px 4px 4px v.$bottom-box-shadow-color;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}

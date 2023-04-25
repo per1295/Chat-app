@@ -1,0 +1,9 @@
+@use "../index.module.scss" as i;
+
+.settings {
+    min-height: calc(100vh + 100px);
+
+    @include i.media-breakpoint-up(md) {
+        min-height: 100vh;
+    }
+}

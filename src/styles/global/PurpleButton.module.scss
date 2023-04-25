@@ -1,0 +1,29 @@
+@use "../variants.scss" as v;
+
+.purpleButton {
+    height: 46px;
+    border: none;
+    background-color: v.$purple-btn-bg;
+    transition: background-color .25s ease;
+    transition: background-color .25s ease;
+    color: v.$purple-btn-color;
+
+    &:hover {
+        background-color: darken($color: v.$purple-btn-bg, $amount: 10%);
+    }
+
+    &:disabled {
+        background-color: darken($color: v.$purple-btn-bg, $amount: 10%);
+    }
+
+    &:hover * {
+        color: darken($color: v.$light, $amount: 10%);
+    }
+
+    * {
+        height: 100%;
+        width: 100%;
+        transition: color .25s ease;
+        color: v.$light;
+    }
+}

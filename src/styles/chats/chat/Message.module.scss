@@ -1,0 +1,7 @@
+.chat_messages_message {
+    margin-top: 31px;
+}
+
+div[data-is-friend=true] > .chat_messages_message {
+    margin-top: 12px;
+}

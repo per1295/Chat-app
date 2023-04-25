@@ -1,0 +1,23 @@
+@use "../variants.scss" as v;
+@use "../index.module.scss" as i;
+
+.custom_progress {
+    height: 5px;
+    background-color: v.$white;
+    z-index: 99999;
+    transition: transform .35s ease;
+
+    @include i.media-breakpoint-up(md) {
+        height: 7px; 
+    }
+
+    .custom_progress_bar {
+        height: 100%;
+        width: 0;
+        background-color: v.$purple;
+    }
+}
+
+.custom_progress_ended {
+    transform: translateY(-100%);
+}

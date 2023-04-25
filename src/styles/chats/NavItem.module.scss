@@ -1,0 +1,38 @@
+@use "../variants.scss" as v;
+
+.nav_item_wrapper {
+    @media screen and ( max-width: 305px ) {
+        width: 100%;
+    }
+
+    .chats_nav_item {
+        font-family: var(--poppins-font);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: v.$nav-item-color;
+        transition: color .25s ease;
+    
+        &:hover {
+            color: lighten($color: v.$nav-item-color, $amount: 20%);
+        }
+    
+        @media screen and ( max-width: 305px ) {
+            width: 100%;
+            transition: color .25s ease, background-color .25s ease;
+        }
+    }
+    
+    .chats_nav_item_active {
+        color: v.$nav-item-active-color;
+    
+        &:hover {
+            color: v.$nav-item-active-color;
+        }
+
+        @media screen and ( max-width: 305px ) {
+            background-color: v.$nav-item-active-bg;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.chats_search_toggler {
+    &:hover {
+        text-decoration: none;
+        outline: 0;
+        box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width);
+    }    
+}

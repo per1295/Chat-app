@@ -1,0 +1,10 @@
+@use "../variants.scss" as v;
+
+.chats_search_scan {
+    --bs-tooltip-bg: v.$search-input-bg;
+
+    background-color: v.$search-input-bg;
+    height: 39px;
+    width: 43px;
+    border-radius: 10px;
+}

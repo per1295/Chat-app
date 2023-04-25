@@ -1,0 +1,43 @@
+@use "../../variants.scss" as v;
+@use "../../index.module.scss" as i;
+
+.chat_messages_message_content {
+    max-width: 244px;
+    padding: 17px 18px 17px 11px;
+    background-color: v.$message-bg;
+    border-radius: 14px;
+    border: 2px solid v.$message-border-color;
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: v.$message-content-color;
+    word-wrap: break-word;
+
+    @include i.media-breakpoint-up(md) {
+        max-width: 50vw;
+        line-height: normal;
+        font-size: 40px;
+    }
+
+    &[data-content-type=image] {
+        width: min(50vw, 244px);
+        height: 180px;
+
+        @include i.media-breakpoint-up(md) {
+            width: min(50vw, 544px);
+            height: 380px;
+        }
+    }
+}
+
+.chat_messages_message_content_friend {
+    background-color: transparent;
+    color: v.$message-friend-content-color;
+}
+
+.chat_messages_message_content_image {
+    border-radius: 14px;
+    object-fit: cover;
+}

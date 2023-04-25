@@ -1,0 +1,89 @@
+@use "./index.module.scss" as i;
+
+// General
+$black: #000000;
+$light: #f8f9fa;
+$purple: #771F98;
+$white: i.$white;
+$red: #EB4335;
+
+// Global
+$purple-btn-color: #F3F3F3;
+$purple-btn-bg: #771F98;
+$audio-bg: rgba(255, 255, 255, .8);
+$audio-icon-color: $purple;
+$alert-error-icon-color: #ff0000;
+
+// Home
+$carousel-bg: #D9D9D9;
+$carousel-bg-active: #8D8D8D;
+
+// Login
+$form-border-color: #6B6B6B;
+$under-form-hr-bg: #949494;
+$bottom-google-color: $red;
+$bottom-apple-color: $black;
+$bottom-facebook-color: #1877F2;
+
+// Chats
+$search-input-bg: #F1F1F1;
+$search-input-color: #252525;
+$nav-item-color: #252525;
+$nav-item-active-color: $purple;
+$nav-item-active-bg: i.$border-color;
+$bottom-bg: #F8F8F8;
+$bottom-box-shadow-color: rgba(0, 0, 0, 0.1);
+$bottom-item-color: #696969;
+$bottom-item-color-active: $purple;
+$chats-main-item-border-color: $bottom-item-color-active;
+$chats-main-item-img-bg: #D9D9D9;
+$chats-main-item-img-border-color-linear-gradient-1: $bottom-item-color-active;
+$chats-main-item-img-border-color-linear-gradient-2: #FFD600;
+$chats-main-item-inf-nickname-color: #181818;
+$chats-main-item-inf-bottom-color: #5C5C5C;
+$chats-main-item-inf-bottom-icon-read-color: #4CA2BD;
+$chats-main-item-inf-bottom-icon-sent-color: #7EBD4C;
+$chats-main-item-birth-color: $chats-main-item-inf-bottom-color;
+
+// AddPerson
+$heading-input-color: $black;
+$persons-item-username-color: $chats-main-item-inf-nickname-color;
+$persons-item-add-bg: $bottom-item-color-active;
+$persons-item-add-icon-color: #F5EDED;
+$persons-item-username-match-color: $bottom-item-color-active;
+
+// Settings
+$profileImg-bg: $chats-main-item-img-bg;
+$profileImg-border-color-linear-gradient-1: $chats-main-item-img-border-color-linear-gradient-1;
+$profileImg-border-color-linear-gradient-2: $chats-main-item-img-border-color-linear-gradient-2;
+$profileImg-color-hover: $bottom-facebook-color;
+
+// Friends
+$request-btn-bg: $purple;
+
+// Chat
+$heading-bg: $bottom-bg;
+$heading-box-shadow-color: rgba(0, 0, 0, 0.25);
+$heading-text-username-color: $chats-main-item-inf-nickname-color;
+$heading-text-status-color: $purple;
+$heading-icons-icon-color: $carousel-bg-active;
+$bottom-textarea-color: #8D8D8D;
+$bottom-icons-icon-color: $bottom-textarea-color;
+$message-bg: $purple;
+$message-border-color: $purple;
+$message-content-color: $white;
+$message-friend-content-color: #171717;
+$message-time-bg: $search-input-bg;
+$message-time-color: #8C8C8C;
+$message-time-icon-waiting-color: $message-time-color;
+$message-time-icon-read-color: #7EBD4C;
+$message-time-icon-sent-color: #4CA2BD;
+$message-time-icon-error-color: #993F3F;
+$message-content-file-bg: $purple;
+$message-content-file-color: $white;
+$voice-recorder-bg: $purple;
+$voice-recorder-icon-color: $white;
+$message-content-audio-bg: $purple;
+$message-content-audio-icon-color: $white;
+$message-content-audio-time-color: $white;
+$message-friend-content-file-color: $white;
