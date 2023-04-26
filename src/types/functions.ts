@@ -68,3 +68,9 @@ export interface ConnectionStatusServiceWorkerMessage {
     type: string;
     payload: ConnectionStatusServiceWorkerMessagePayload;
 }
+
+export type GetFormatedDateOptions = Partial<{
+    y: boolean;
+    m: boolean;
+    d: boolean;
+}>;

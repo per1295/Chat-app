@@ -1,4 +1,4 @@
-import type { AnyObject, GetFormatedTimeOptions } from "src/types/functions";
+import type { AnyObject, GetFormatedTimeOptions, GetFormatedDateOptions, DateTimePart } from "src/types/functions";
 
 export function checkFields<Type extends Object>(obj: Type, ...keys: string[]): boolean {
     let result = true;
@@ -80,4 +80,39 @@ export function getFormatedTime(dateTimeString: string, opt: GetFormatedTimeOpti
     }
 
     return dateTimeString;
+}
+
+export function getFormatedDate(dateTimeString: string, opt: GetFormatedDateOptions = {}) {
+    const matchOfDate = dateTimeString.match(/(?<![\:\d])\d{2,4}(?![\:\d])/g);
+
+    if ( matchOfDate ) {
+        const { y, m, d } = opt;
+
+        dateTimeString = matchOfDate
+        .filter((_i, index) => {
+            return !index && y || index === 1 && m || index === 2 && d 
+        })
+        .join(".");
+    }
+
+    return dateTimeString;
+}
+
+export function getDateTime(d?: Date) {
+    const date = d ?? new Date();
+
+    let year: DateTimePart = date.getFullYear();
+    let month: DateTimePart = date.getMonth() + 1;
+    let day: DateTimePart = date.getDate();
+    let hours: DateTimePart = date.getHours();
+    let minutes: DateTimePart = date.getMinutes();
+    let seconds: DateTimePart = date.getSeconds();
+
+    if ( month < 10 ) month = `0${month}`;
+    if ( day < 10 ) day = `0${day}`;
+    if ( hours < 10 ) hours = `0${hours}`;
+    if ( minutes < 10 ) minutes = `0${minutes}`;
+    if ( seconds < 10 ) seconds = `0${seconds}`;
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }

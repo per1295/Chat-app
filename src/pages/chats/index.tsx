@@ -10,8 +10,8 @@ import type { ChatsData, LastMessage, LastMessageStatus, ChatServerVersion } fro
 import type { UserData } from "src/types/redux";
 import type { UnitedWithErrorProps } from "src/types/functions";
 
-import { getServerSidePropsWrapper, getDateTime } from "src/server/functions";
-import { checkFields, normalizeBase64, deleteFromObj } from "src/globalUtils/functions";
+import { getServerSidePropsWrapper } from "src/server/functions";
+import { checkFields, normalizeBase64, deleteFromObj, getDateTime } from "src/globalUtils/functions";
 import { useState, useEffect } from "react";
 import { HeadingInputContext } from "src/utils/contexts";
 

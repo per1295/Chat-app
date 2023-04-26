@@ -2,8 +2,9 @@ import type { NextApiHandler } from "next";
 import type { PostUserMessageResponse } from "src/types/responses";
 import type { ChatDataMessage, PostUserMessageArg, GetMessagesQuery } from "src/types/redux";
 
-import { getRandomId, getDateTime, stringToBuffer, bufferToString } from "src/server/functions";
+import { getRandomId, stringToBuffer, bufferToString } from "src/server/functions";
 import { ExtendedHandler } from "src/server/constructors";
+import { getDateTime } from "src/globalUtils/functions";
 
 const getHandler: NextApiHandler<ChatDataMessage[]> = async (req, res) => {
     const { idOfChat, lastMessageId } = req.query as Partial<GetMessagesQuery>;

@@ -4,11 +4,11 @@ import Bottom from "@components/chats/chat/Bottom";
 import Main from "@components/chats/chat/Main";
 
 import { getServerSidePropsWrapper } from "src/server/functions";
-import { checkFields, normalizeBase64 } from "src/globalUtils/functions";
+import { checkFields, normalizeBase64, getDateTime } from "src/globalUtils/functions";
 import { useReduxWithServerData } from "src/utils/hooks";
 import { setChatData, resetChatData } from "src/redux/chatData";
 import { ChatDataContext } from "src/utils/contexts";
-import { getDateTime, bufferToString } from "src/server/functions";
+import { bufferToString } from "src/server/functions";
 
 import type { FunctionComponent } from "react";
 import type { UnitedWithErrorProps } from "src/types/functions";
@@ -84,7 +84,7 @@ export const getServerSideProps = getServerSidePropsWrapper<GetServerSideProps>(
                 });
     
                 const chatData = { messages, ...user } as ChatDataFromServer;
-    
+                
                 return {
                     props: {
                         chatData
@@ -105,7 +105,7 @@ const Chat: FunctionComponent<UnitedWithErrorProps<GetServerSideProps>> = ({ cha
         {
             ...chatData,
             status: "fulfilled",
-            isAllMessages: !chatData.messages.length
+            isAllMessages: !chatData?.messages.length
         },
         resetChatData
     );

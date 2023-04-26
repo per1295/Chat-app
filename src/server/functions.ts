@@ -3,7 +3,7 @@ import { capitalize } from "src/utils/functions";
 import { normalizeBase64 } from "src/globalUtils/functions";
 
 import type { NextApiResponse, GetServerSideProps } from "next";
-import type { DateTimePart, CookieOptions, BufferTypes } from "src/types/functions";
+import type { CookieOptions, BufferTypes } from "src/types/functions";
 import type { AnyObject, ErrorProps } from "src/types/functions";
 
 export async function mysql() {
@@ -112,25 +112,6 @@ export function getRandomId() {
     }
 
     return result;
-}
-
-export function getDateTime(d?: Date) {
-    const date = d ?? new Date();
-
-    let year: DateTimePart = date.getFullYear();
-    let month: DateTimePart = date.getMonth() + 1;
-    let day: DateTimePart = date.getDate();
-    let hours: DateTimePart = date.getHours();
-    let minutes: DateTimePart = date.getMinutes();
-    let seconds: DateTimePart = date.getSeconds();
-
-    if ( month < 10 ) month = `0${month}`;
-    if ( day < 10 ) day = `0${day}`;
-    if ( hours < 10 ) hours = `0${hours}`;
-    if ( minutes < 10 ) minutes = `0${minutes}`;
-    if ( seconds < 10 ) seconds = `0${seconds}`;
-
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
 
 export function setCookies(res: NextApiResponse, cookies: AnyObject, opts?: CookieOptions) {

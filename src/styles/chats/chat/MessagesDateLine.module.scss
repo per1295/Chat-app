@@ -1,0 +1,12 @@
+@use "../../variants.scss" as v;
+@use "../../index.module.scss" as i;
+
+.messageDate_line {
+    background-color: v.$messages-date-line-bg;
+    border: 1px solid v.$messages-date-line-bg;
+    width: 30.5%;
+
+    @include i.media-breakpoint-up(md) {
+        border: 2.5px solid v.$messages-date-line-bg;
+    }
+}

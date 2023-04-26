@@ -1,8 +1,8 @@
 import type { NextApiHandler } from "next";
 import type { AddUserResponse } from "src/types/responses";
 
-import { getRandomId, getDateTime, setCookies } from "src/server/functions";
-import { objValuesTruthy, deleteFromObj, normalizeBase64 } from "src/globalUtils/functions";
+import { getRandomId, setCookies } from "src/server/functions";
+import { objValuesTruthy, deleteFromObj, normalizeBase64, getDateTime } from "src/globalUtils/functions";
 import { ExtendedHandler } from "src/server/constructors";
 
 interface RequestBody {

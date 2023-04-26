@@ -1,7 +1,6 @@
 import type { NextApiHandler } from "next";
 import type { PatchChangeUserStatusBody } from "src/types/functions";
 
-import { wrapper } from "src/server/functions";
 import { ExtendedHandler } from "src/server/constructors";
 
 const handler: NextApiHandler<string> = async (req, res) => {

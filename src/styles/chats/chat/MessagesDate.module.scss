@@ -1,0 +1,11 @@
+@use "../../mixins.scss" as m;
+@use "../../index.module.scss" as i;
+
+.messagesDate_date {
+    @include m.sub_main_text;
+
+    @include i.media-breakpoint-up(md) {
+        font-size: 40px;
+        line-height: normal;
+    }
+}
