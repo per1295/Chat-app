@@ -64,7 +64,9 @@ const handler: NextApiHandler<GetUsersResponse> = async (req, res) => {
             { id, input: headingInput }
         ) as [ GetUsersResponse ];
 
-        if ( !addUsers.length ) throw new Error("Users with this nickname or email doesn`t exist");
+        if ( !addUsers.length ) {
+            throw new Error("Users with this nickname or email don`t exist");
+        }
 
         addUsers = addUsers.map(addUser => ({ ...addUser, status: addUser.status ?? "none" }));
 

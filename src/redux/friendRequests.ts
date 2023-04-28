@@ -42,10 +42,10 @@ const friendRequestsSlice = createSlice({
             if ( state && action.payload ) {
                 state.status = "fulfilled";
 
-                const { idOfRequester, status } = action.payload;
+                const { idOfFriend, status } = action.payload;
 
                 state.requests = state.requests.map(request => {
-                    if ( request.idOfRequester === idOfRequester ) {
+                    if ( request.idOfFriend === idOfFriend ) {
                         request.status = status;
                     }
 

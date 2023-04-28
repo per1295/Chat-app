@@ -74,3 +74,8 @@ export type GetFormatedDateOptions = Partial<{
     m: boolean;
     d: boolean;
 }>;
+
+export interface ArrayItemWithId {
+    id: string;
+    [key: string]: any;
+}

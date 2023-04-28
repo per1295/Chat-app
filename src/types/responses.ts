@@ -11,7 +11,7 @@ export interface FriendRequestResponse extends FriendRequestArg {
 
 export type PatchUserDataResponse = NonNullable<UserData>;
 
-export type FriendRequestStatusResponse = Pick<FriendRequest, "id" | "idOfRequester" | "status">;
+export type FriendRequestStatusResponse = Pick<FriendRequest, "id" | "idOfFriend" | "status">;
 
 export type PostUserMessageResponse = ChatDataMessage;
 

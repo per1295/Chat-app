@@ -96,12 +96,16 @@ export const getServerSideProps = getServerSidePropsWrapper<ChatsData>(
                             LIMIT 1
                         ) AS idOfSender
                     FROM chats
+                    WHERE
+                        firstMember = :id
+                        OR
+                        secondMember = :id
                 `,
                 {
                     id
                 }
             );
-
+            
             if ( chats.length ) {
                 chats = chats.map((chat: Partial<ChatServerVersion & LastMessage>) => {
                     if ( checkFields(chat, "content", "type", "status", "birth", "idOfSender") ) {

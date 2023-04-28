@@ -1,4 +1,11 @@
+@use "../../variants.scss" as v;
+
 .chat_messages {
     min-height: calc(100vh + 40px);
     padding: 108px 20px;
+
+    .chat_messages_spinner {
+        font-size: 40px;
+        color: v.$purple;
+    }
 }

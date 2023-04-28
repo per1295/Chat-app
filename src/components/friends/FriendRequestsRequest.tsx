@@ -9,7 +9,7 @@ import Icon from "@components/global/Icon";
 import FriendRequestsRequestButtons from "./FriendRequestsRequestButtons";
 
 const FriendRequestsRequest: FunctionComponent<Omit<FriendRequest, "id">> =
-({ idOfRequester, username, status, profileImage }) =>
+({ idOfFriend, username, status, profileImage }) =>
 {
     return(
         <div className={`position-relative d-flex flex-wrap align-items-center justify-content-evenly gap-3 px-2 py-3 ${style.friends_friendRequests_request}`}>
@@ -22,9 +22,9 @@ const FriendRequestsRequest: FunctionComponent<Omit<FriendRequest, "id">> =
             }
             <div className={`mw-100 d-flex flex-wrap align-items-center justify-content-center gap-3 ${style.friends_friendRequests_request_main}`}>
                 <span className={`mw-100 d-inline-block text-truncate text-center ${style.friends_friendRequests_request_main_username}`}>{username}</span>
-                <FriendRequestsRequestButtons status={status} idOfRequester={idOfRequester} />
+                <FriendRequestsRequestButtons status={status} idOfFriend={idOfFriend} />
             </div>
-            <Link className="position-absolute top-0 start-0 h-100 w-100" href={`/users/${idOfRequester}`} />
+            <Link className="position-absolute top-0 start-0 h-100 w-100" href={`/users/${idOfFriend}`} />
         </div>
     )
 }

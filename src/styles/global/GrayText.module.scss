@@ -1,0 +1,10 @@
+@use "../variants.scss" as v;
+
+.grayText {
+    font-family: var(--poppins-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: v.$gray-text-color;
+}

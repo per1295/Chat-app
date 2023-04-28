@@ -7,32 +7,60 @@ import { ExtendedHandler } from "src/server/constructors";
 import { getDateTime } from "src/globalUtils/functions";
 
 const getHandler: NextApiHandler<ChatDataMessage[]> = async (req, res) => {
-    const { idOfChat, lastMessageId } = req.query as Partial<GetMessagesQuery>;
+    const { idOfChat, lastMessageId, latestMessageId } = req.query as Partial<GetMessagesQuery>;
     const { connection } = globalThis;
 
-    let [ messages ] = await connection.execute(
-        `
-            SELECT * FROM messages
-            WHERE
-                idOfChat = :idOfChat
-                AND
-                id != :lastMessageId
-                AND
-                UNIX_TIMESTAMP(birth) <= UNIX_TIMESTAMP(
-                    (
-                        SELECT birth FROM messages
-                        WHERE id = :lastMessageId
-                        LIMIT 1
+    let messages;
+
+    if ( lastMessageId ) {
+        [ messages ] = await connection.execute(
+            `
+                SELECT * FROM messages
+                WHERE
+                    idOfChat = :idOfChat
+                    AND
+                    id != :lastMessageId
+                    AND
+                    UNIX_TIMESTAMP(birth) <= UNIX_TIMESTAMP(
+                        (
+                            SELECT birth FROM messages
+                            WHERE id = :lastMessageId
+                            LIMIT 1
+                        )
                     )
-                )
-            ORDER BY birth DESC
-            LIMIT 5
-        `,
-        { idOfChat, lastMessageId }
-    );
+                ORDER BY birth DESC
+                LIMIT 5
+            `,
+            { idOfChat, lastMessageId }
+        );
+    } else if ( latestMessageId ) {
+        [ messages ] = await connection.execute(
+            `
+                SELECT * FROM messages
+                WHERE
+                    idOfChat = :idOfChat
+                    AND
+                    id != :latestMessageId
+                    AND
+                    UNIX_TIMESTAMP(birth) >= UNIX_TIMESTAMP(
+                        (
+                            SELECT birth FROM messages
+                            WHERE id = :latestMessageId
+                            LIMIT 1
+                        )
+                    )
+                ORDER BY birth DESC
+            `,
+            { idOfChat, latestMessageId }
+        );
+    } else {
+        throw new Error("The wrong query of request");
+    }
 
     messages = messages.reverse().map((message: any) => {
         message.content = bufferToString(message.type, message.content);
+        message.birth = getDateTime(message.birth);
+
         return message;
     });
 

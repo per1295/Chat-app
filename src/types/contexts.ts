@@ -5,7 +5,7 @@ import type { Dispatch, SetStateAction } from "react";
 
 export type IOffcanvasContext = RefObject<Offcanvas> | null;
 
-export type IChatDataContext = Omit<NonNullable<ChatData>, "status" | "statusMessage"> | null;
+export type IChatDataContext = NonNullable<ChatData> | null;
 
 export interface IHeadingInputContext {
     value: string;

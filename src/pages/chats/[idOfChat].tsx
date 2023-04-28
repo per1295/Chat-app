@@ -13,6 +13,7 @@ import { bufferToString } from "src/server/functions";
 import type { FunctionComponent } from "react";
 import type { UnitedWithErrorProps } from "src/types/functions";
 import type { GetServerSideProps, ChatGetServerSidePropsParams, ChatDataFromServer, ChatGetServerSidePropsCookies, ChatMessageFromServer } from "src/types/chat";
+import type { ChatData } from "src/types/redux";
 
 export const getServerSideProps = getServerSidePropsWrapper<GetServerSideProps>(
     async ({ params, req }) => {
@@ -63,7 +64,9 @@ export const getServerSideProps = getServerSidePropsWrapper<GetServerSideProps>(
             if ( users.length ) {
                 const user = users[0];
 
-                user.profileImage = normalizeBase64(user.profileImage.toString("base64"));
+                if ( user?.profileImage ) {
+                    user.profileImage = normalizeBase64(user.profileImage.toString("base64"));
+                }
     
                 let [ messages ] = await connection.execute(
                     `
@@ -77,8 +80,8 @@ export const getServerSideProps = getServerSidePropsWrapper<GetServerSideProps>(
 
                 messages = messages
                 .reverse()
-                .map((message: ChatMessageFromServer) => {
-                    message.birth = getDateTime(message.birth as Date);
+                .map((message: any) => {
+                    message.birth = getDateTime(message.birth);
                     message.content = bufferToString(message.type, message.content as Buffer);
                     return message;
                 });
@@ -100,15 +103,13 @@ export const getServerSideProps = getServerSidePropsWrapper<GetServerSideProps>(
 )
 
 const Chat: FunctionComponent<UnitedWithErrorProps<GetServerSideProps>> = ({ chatData, errorName, errorMessage }) => {
-    useReduxWithServerData(
-        setChatData,
-        {
-            ...chatData,
-            status: "fulfilled",
-            isAllMessages: !chatData?.messages.length
-        },
-        resetChatData
-    );
+    const contextValue = {
+        ...chatData,
+        status: "fulfilled",
+        isAllMessages: !chatData?.messages.length
+    } as NonNullable<ChatData>;
+
+    useReduxWithServerData(setChatData, contextValue, resetChatData);
 
     if ( errorName && errorMessage ) {
         return(
@@ -116,7 +117,7 @@ const Chat: FunctionComponent<UnitedWithErrorProps<GetServerSideProps>> = ({ cha
         )
     } else {
         return(
-            <ChatDataContext.Provider value={chatData}>
+            <ChatDataContext.Provider value={contextValue}>
                 <Heading />
                 <Main />
                 <Bottom />

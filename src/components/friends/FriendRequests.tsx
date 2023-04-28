@@ -12,7 +12,7 @@ const FriendRequests: FunctionComponent<FriendRequestsProps> = ({ requests }) =>
                 requests.map(item => (
                     <FriendRequestsRequest
                         key={item.id}
-                        idOfRequester={item.idOfRequester}
+                        idOfFriend={item.idOfFriend}
                         username={item.username}
                         profileImage={item.profileImage}
                         status={item.status}

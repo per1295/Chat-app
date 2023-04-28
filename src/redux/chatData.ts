@@ -11,7 +11,7 @@ import type {
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { PostUserMessageResponse, PatchReadUserMessageResponse } from "src/types/responses";
 
-import { payloadCreatorWrapper, getChatsPath } from "src/utils/functions";
+import { payloadCreatorWrapper, getChatsPath, removeItemsWithId } from "src/utils/functions";
 import { getAxiosPathFromURL } from "src/globalUtils/functions";
 import axios from "axios";
 
@@ -29,7 +29,18 @@ export const getStatusOfUser = createAsyncThunk(
                 return response.data
             }
         }
-    )
+    ),
+    {
+        condition: (_arg, { getState }) => {
+            const { chatData } = getState() as ReduxState;
+
+            if ( chatData && chatData.status === "pending" ) {
+                return false;
+            }
+
+            return true;
+        }
+    }
 );
 
 export const postMessages = createAsyncThunk(
@@ -85,12 +96,20 @@ export const getMessages = createAsyncThunk(
     "messages/GET",
     payloadCreatorWrapper(
         async (arg: GetMessagesArg, { signal }) => {
-            const { lastMessageId } = arg;
             let axiosString = getChatsPath("messages");
             
             if ( axiosString ) {
                 const url = new URL(axiosString, location.origin);
-                url.searchParams.set("lastMessageId", lastMessageId);
+                
+                const { lastMessageId, latestMessageId } = arg;
+                
+                if ( lastMessageId ) {
+                    url.searchParams.set("lastMessageId", lastMessageId);
+                }
+
+                if ( latestMessageId ) {
+                    url.searchParams.set("latestMessageId", latestMessageId);
+                }
 
                 axiosString = getAxiosPathFromURL(url);
 
@@ -102,20 +121,13 @@ export const getMessages = createAsyncThunk(
     ),
     {
         condition: (_arg, { getState }) => {
-            let result = true;
             const { chatData } = getState() as ReduxState;
             
-            if ( chatData ) {
-                const { status, isAllMessages } = chatData;
-                
-                if ( status === "pending" || isAllMessages ) {
-                    result = false;
-                }
-            } else {
-                result = false;
+            if ( chatData && chatData.status === "pending" ) {
+                return false;
             }
 
-            return result;
+            return true;
         }
     }
 )
@@ -162,8 +174,6 @@ const chatDataSlice = createSlice({
         })
         .addCase(postMessages.pending, (state, action) => {
             if ( state ) {
-                state.status = "pending";
-
                 let { content, type, idOfSender, idOfChat } = action.meta.arg;
 
                 state.messages.push({
@@ -179,8 +189,6 @@ const chatDataSlice = createSlice({
         })
         .addCase(postMessages.rejected, (state, action) => {
             if ( state ) {
-                state.status = "rejected";
-
                 state.messages = state.messages.map(message => {
                     if ( message.id === `placeholder-${action.meta.requestId}` ) {
                         message.status = "error";
@@ -206,15 +214,26 @@ const chatDataSlice = createSlice({
         .addCase(getMessages.fulfilled, (state, action) => {
             if ( state && action.payload ) {
                 state.status = "fulfilled";
-                if ( !action.payload.length ) state.isAllMessages = true;
-                state.messages = [ ...action.payload, ...state.messages ];
+                
+                const { lastMessageId, latestMessageId } = action.meta.arg;
+
+                state.messages = state.messages.filter( removeItemsWithId(action.payload) );
+
+                if ( lastMessageId ) {
+                    if ( !action.payload.length ) state.isAllMessages = true;
+                    state.messages = [ ...action.payload, ...state.messages ];
+                } else if ( latestMessageId ) {
+                    state.messages = [ ...state.messages, ...action.payload ];
+                }
             }
         })
         .addCase(getMessages.rejected, state => {
             if ( state ) state.status = "fulfilled";
         })
-        .addCase(getMessages.pending, state => {
-            if ( state ) state.status = "pending";
+        .addCase(getMessages.pending, (state, action) => {
+            if ( state && action.meta.arg?.lastMessageId ) {
+                state.status = "pending";
+            }
         });
     }
 });

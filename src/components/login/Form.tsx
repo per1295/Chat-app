@@ -27,11 +27,18 @@ export default function Form() {
             try {
                 const thunkPayload = await dispatch( postNewUser(formData) ).unwrap();
 
-                if ( thunkPayload?.profileImage ) {
-                    storage?.setItem("user-data-profile-image", thunkPayload.profileImage);
-                }
-
                 if ( thunkPayload && checkFields(thunkPayload, "id", "email", "password") ) {
+                    if ( thunkPayload.profileImage ) {
+                        storage?.setItem("user-data-profile-image", thunkPayload.profileImage);
+                    }
+
+                    dispatch(
+                        addAlert({
+                            title: `Wellcome ${thunkPayload.email}. Please wait.`,
+                            icon: "info"
+                        })
+                    );
+
                     router.push("/chats");
                 }
             } catch (error) {

@@ -11,6 +11,29 @@ export default function Main() {
     const chatData = useChatData();
 
     useEffect(() => {
+        let timeout: NodeJS.Timeout;
+
+        if ( chatData ) {
+            const { messages } = chatData;
+            const latestMessage = messages.at(-1);
+
+            if ( latestMessage ) {
+                const latestMessageId = latestMessage.id;
+
+                timeout = setTimeout(async function tick() {
+                    await dispatch( getMessages({ latestMessageId }) );
+        
+                    timeout = setTimeout(tick, 2500);
+                }, 5000);
+            }
+        }
+
+        return () => {
+            if ( timeout ) clearTimeout(timeout);
+        }
+    }, [ chatData ]);
+
+    useEffect(() => {
         let timeout = setTimeout(async function tick() {
             await dispatch( getStatusOfUser() );
 
@@ -23,27 +46,11 @@ export default function Main() {
     }, []);
 
     useEffect(() => {
-        scroll({
+        scrollTo({
             top: document.body.scrollHeight,
             behavior: "smooth"
         });
     }, []);
-
-    function scrollMessages() {
-        const { chatData } = store.getState();
-        let { top } = document.body.getBoundingClientRect();
-        
-        top = Math.floor(top);
-
-        if ( chatData && top > -20 ) {
-            const { messages } = chatData;
-            const lastMessage = messages.at(0);
-
-            if ( lastMessage ) {
-                dispatch( getMessages({ lastMessageId: lastMessage.id }) );
-            }
-        }
-    }
 
     useEffect(() => {
         document.addEventListener("scroll", scrollMessages);
@@ -53,5 +60,31 @@ export default function Main() {
         }
     }, []);
 
-    return chatData?.messages.length ? <Messages messages={chatData.messages} /> : <NoMessages />
+    function scrollMessages() {
+        const { chatData } = store.getState();
+        let { top } = document.body.getBoundingClientRect();
+        
+        top = Math.floor(top);
+
+        if ( chatData && !chatData.isAllMessages && top > -20 ) {
+            const { messages } = chatData;
+            const lastMessage = messages.at(0);
+
+            if ( lastMessage ) {
+                dispatch( getMessages({ lastMessageId: lastMessage.id }) );
+            }
+        }
+    }
+
+    if ( chatData && chatData.messages.length ) {
+        return(
+            <Messages
+                messages={chatData.messages}
+                status={chatData.status}
+                isAllMessages={chatData.isAllMessages}
+            />
+        )
+    }
+
+    return <NoMessages />
 }

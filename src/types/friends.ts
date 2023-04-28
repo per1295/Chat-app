@@ -10,7 +10,7 @@ export type FriendRequests = FriendRequest[] | null;
 
 export interface FriendRequest {
     id: string;
-    idOfRequester: string;
+    idOfFriend: string;
     username: string;
     profileImage: string | null;
     status: "accepted" | "denied" | "requested";

@@ -12,11 +12,11 @@ import { useState } from "react";
 
 interface FriendRequestsRequestButtonsProps {
     status: FriendRequest["status"];
-    idOfRequester: string;
+    idOfFriend: string;
 }
 
 const FriendRequestsRequestButtons: FunctionComponent<FriendRequestsRequestButtonsProps> =
-({ status, idOfRequester }) =>
+({ status, idOfFriend }) =>
 {
     const userData = useTypedSelector<"userData">(state => state.userData);
     const friendRequests = useTypedSelector<"friendRequests">(state => state.friendRequests);
@@ -31,7 +31,7 @@ const FriendRequestsRequestButtons: FunctionComponent<FriendRequestsRequestButto
                 patchFriendRequestStatus({
                     id: userData.id,
                     status: "accepted",
-                    idOfRequester
+                    idOfFriend
                 })
             )
             .unwrap();
@@ -46,7 +46,7 @@ const FriendRequestsRequestButtons: FunctionComponent<FriendRequestsRequestButto
                 patchFriendRequestStatus({
                     id: userData.id,
                     status: "denied",
-                    idOfRequester
+                    idOfFriend
                 })
             )
             .unwrap();

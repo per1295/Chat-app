@@ -1,4 +1,4 @@
-import type { CheckFormItemOpt, BytesToFormat } from "src/types/functions";
+import type { CheckFormItemOpt, BytesToFormat, ArrayItemWithId } from "src/types/functions";
 import type { AsyncThunkPayloadCreator } from "@reduxjs/toolkit";
 import type { AxiosError } from "axios";
 
@@ -96,7 +96,7 @@ export function checkCookies(...fields: string[]): boolean {
 
     const allCookies = cookie.all();
 
-    result = !fields.some(field => !(field in allCookies))
+    result = !fields.some(field => !(field in allCookies));
 
     return result;
 }
@@ -187,4 +187,10 @@ export function isAudioTimeEnd(recordingTime: string) {
         return numPartOfTime > 0 && !isNaN(numPartOfTime);
     })
     .length;
+}
+
+export function removeItemsWithId(arr: ArrayItemWithId[]) {
+    return (itemWithId: ArrayItemWithId) => {
+        return !arr.some(item => item.id === itemWithId.id);
+    }
 }

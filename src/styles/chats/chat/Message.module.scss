@@ -1,7 +1,21 @@
+@import "../../keyframes.scss";
+
 .chat_messages_message {
     margin-top: 31px;
+    transform: translateX(20px);
+    opacity: 0;
 }
 
-div[data-is-friend=true] > .chat_messages_message {
+.chat_messages_message[data-is-friend=true] {
     margin-top: 12px;
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+.message_appear {
+    animation: message_appear .35s ease forwards;
+}
+
+.friend_message_appear {
+    animation: friend_message_appear .35s ease forwards;
 }

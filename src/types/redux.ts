@@ -88,7 +88,8 @@ export interface Alert {
 }
 
 export interface GetMessagesArg {
-    lastMessageId: string;
+    lastMessageId?: string;
+    latestMessageId?: string;
 }
 
 export interface GetMessagesQuery extends GetMessagesArg {

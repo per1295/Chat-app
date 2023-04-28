@@ -20,29 +20,58 @@ export const getServerSideProps = getServerSidePropsWrapper<FriendsProps>(
             `
                 SELECT
                     friendRequests.id,
-                    friendRequests.idOfRequester,
-                    users.profileImage,
-                    friendRequests.status,
                     CASE
-                        WHEN users.name IS NOT NULL AND users.surname IS NOT NULL
-                        THEN CONCAT_WS (" ", users.name, users.surname)
-                        ELSE users.email
-                    END AS username
-                FROM friendRequests, users
+                        WHEN idOfRequester = :id
+                        THEN idOfResponser
+                        ELSE idOfRequester
+                    END AS idOfFriend,
+                    (
+                        SELECT profileImage FROM users
+                        WHERE
+                            users.id = friendRequests.idOfRequester
+                            AND
+                            friendRequests.idOfResponser = :id
+                            OR
+                            users.id = friendRequests.idOfResponser
+                            AND
+                            friendRequests.idOfRequester = :id
+                    ) AS profileImage,
+                    friendRequests.status,
+                    (
+                        SELECT
+                        CASE
+                            WHEN users.name IS NOT NULL AND users.surname IS NOT NULL
+                            THEN CONCAT_WS (" ", users.name, users.surname)
+                            ELSE users.email
+                        END
+                        FROM users
+                        WHERE
+                            users.id = friendRequests.idOfRequester
+                            AND
+                            friendRequests.idOfResponser = :id
+                            OR
+                            users.id = friendRequests.idOfResponser
+                            AND
+                            friendRequests.idOfRequester = :id
+                    ) AS username
+                FROM friendRequests
                 WHERE
-                    friendRequests.idOfResponser = :idOfResponser
-                    AND friendRequests.idOfRequester = users.id
+                    (
+                        friendRequests.idOfResponser = :id
+                        OR
+                        friendRequests.idOfRequester = :id
+                    )
                     AND friendRequests.status != "none"
                     AND EXISTS (
                         SELECT * FROM users
-                        WHERE id = :idOfResponser
+                        WHERE id = :id
                         AND email = :email
                         AND password = :password
                         LIMIT 1
                     )
             `,
             objValuesUnitedWithNull({
-                idOfResponser: id,
+                id,
                 email,
                 password
             })
@@ -71,8 +100,8 @@ export const getServerSideProps = getServerSidePropsWrapper<FriendsProps>(
 
 const Friends: NextPageWithLayout<FriendsProps> = ({ requests }) => {
     useReduxWithServerData(setFriendRequests, requests ? { status: "fulfilled", requests } : requests);
-    const friendRequests = useTypedSelector<"friendRequests">(state => state.friendRequests);
 
+    const friendRequests = useTypedSelector<"friendRequests">(state => state.friendRequests);
     const mainRequests = friendRequests?.requests ?? requests;
 
     return(

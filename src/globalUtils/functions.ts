@@ -1,11 +1,11 @@
 import type { AnyObject, GetFormatedTimeOptions, GetFormatedDateOptions, DateTimePart } from "src/types/functions";
 
-export function checkFields<Type extends Object>(obj: Type, ...keys: string[]): boolean {
+export function checkFields<Type extends AnyObject>(obj: Type, ...keys: string[]): boolean {
     let result = true;
 
-    const objKeys = Object.keys(obj), objValues = Object.values(obj);
+    const objKeys = Object.keys(obj);
 
-    result = !keys.some(key => !objKeys.includes(key)) && !objValues.some(value => !value);
+    result = !keys.some(key => !objKeys.includes(key)) && !keys.some(key => !obj[key]);
 
     return result;
 }

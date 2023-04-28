@@ -73,6 +73,18 @@ const handler: NextApiHandler<AddUserResponse> = async (req, res) => {
 
         res.json(responseBody);
     } else {
+        const [ userWithExistedEmail ] = await connection.execute(
+            `
+                SELECT * FROM users
+                WHERE email = :email
+            `,
+            { email }
+        );
+
+        if ( userWithExistedEmail.length ) {
+            throw new Error("Wrong password of email");
+        }
+
         userId = getRandomId();
         const birth = getDateTime();
 
