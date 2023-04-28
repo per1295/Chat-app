@@ -8,6 +8,7 @@ import PurpleButton from "@components/global/PurpleButton";
 import { useFormValidation, useLocalStorage } from "src/utils/hooks";
 import { useTypedSelector, useTypedDispatch } from "src/utils/hooks";
 import { patchUserData } from "src/redux/userData";
+import { addAlert } from "src/redux/alerts";
 
 import type { FormEventHandler } from "react";
 
@@ -25,9 +26,18 @@ export default function ProfileData() {
         const thunkAction = await dispatch(
             patchUserData(newUserData)
         );
-        
-        if ( thunkAction.meta.requestStatus === "fulfilled" && thunkAction.meta.arg?.profileImage ) {
-            storage?.setItem("user-data-profile-image", thunkAction.meta.arg.profileImage);
+
+        if ( thunkAction.meta.requestStatus === "fulfilled" ) {
+            dispatch(
+                addAlert({
+                    title: "Changes was saved",
+                    icon: "info"
+                })
+            );
+
+            if ( thunkAction.meta.arg?.profileImage ) {
+                storage?.setItem("user-data-profile-image", thunkAction.meta.arg.profileImage);
+            }
         }
     }
 

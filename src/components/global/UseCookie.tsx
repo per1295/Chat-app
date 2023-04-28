@@ -12,20 +12,20 @@ export default function UseCookie() {
     const [ nowUserId, setNowUserId ] = useState<string | null>(null);
 
     useEffect(() => {
-        if ( userData && userData.id && !nowUserId ) {
-            setNowUserId(userData.id);
+        if ( userData ) {
+            if ( userData.id ) {
+                setNowUserId(userData.id);
+            }
+    
+            if ( nowUserId && userData.id !== nowUserId ) {
+                // Clear previous user`s browsing data.
+                cookie.clear("username");
+                localStorage?.clear();
+            }
         }
     }, [ userData, nowUserId ]);
 
     useEffect(() => {
-        if ( userData && userData.id !== nowUserId ) {
-            // Clear previous user`s browsing data.
-            cookie.clear("username");
-            localStorage?.clear();
-
-            setNowUserId(userData.id);
-        }
-
         if ( checkCookies("id", "email", "password") ) {
             const allCookies = cookie.all();
             const profileImage = storage?.getItem("user-data-profile-image") ?? undefined;
@@ -41,7 +41,7 @@ export default function UseCookie() {
                 })
             );
         }
-    }, [ storage, userData, nowUserId ]);
+    }, [ storage ]);
 
     return null;
 }

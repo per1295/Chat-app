@@ -9,7 +9,7 @@ import axios from "axios";
 
 import Title from "@components/global/Title";
 import UseCookie from "@components/global/UseCookie";
-import BeforeUnload from "@components/global/BeforeUnload";
+import UserUnload from "@components/global/UserUnload";
 import UserOnload from "@components/global/UserOnload";
 import LoadingProgress from "@components/global/LoadingProgress";
 import Alerts from "@components/global/Alerts";
@@ -68,7 +68,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                 <UseCookie />
                 <LoadingProgress />
                 <Alerts />
-                <BeforeUnload />
+                <UserUnload />
                 <UserOnload />
                 <CookieAcception />
                 <ConnectionStatus />

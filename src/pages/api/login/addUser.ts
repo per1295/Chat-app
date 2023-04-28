@@ -1,8 +1,8 @@
 import type { NextApiHandler } from "next";
 import type { AddUserResponse } from "src/types/responses";
 
-import { getRandomId, setCookies } from "src/server/functions";
-import { objValuesTruthy, deleteFromObj, normalizeBase64, getDateTime } from "src/globalUtils/functions";
+import { getRandomId, setCookies, bufferToString } from "src/server/functions";
+import { objValuesTruthy, deleteFromObj, getDateTime } from "src/globalUtils/functions";
 import { ExtendedHandler } from "src/server/constructors";
 
 interface RequestBody {
@@ -54,11 +54,11 @@ const handler: NextApiHandler<AddUserResponse> = async (req, res) => {
         );
         
         if ( existUser?.profileImage ) {
-            existUser.profileImage = normalizeBase64(Buffer.from(existUser.profileImage).toString("base64"));
+            existUser.profileImage = bufferToString("image", existUser.profileImage);
         }
 
         const responseBody = objValuesTruthy<AddUserResponse>(existUser);
-
+        
         setCookies(
             res,
             deleteFromObj(
